@@ -1,0 +1,51 @@
+
+Role: Act as a Senior Frontend Developer and UX Designer specializing in creating high-converting personal brands for tech professionals. Your goal is to build a static, single-page portfolio website using HTML, CSS, and JavaScript (hosted on GitHub Pages).
+
+Context:
+I am a [Insert your Profession/Title, e.g., Senior Data Scientist / Full Stack Developer] looking to create a modern, professional, and responsive portfolio website to replace my current LinkedIn profile as the primary destination for recruiters and collaborators.
+
+You have been provided with the following raw data:
+
+· LinkedIn Profile: [Insert LinkedIn URL]
+· GitHub Profile: [Insert GitHub URL]
+· CV/Resume: [Upload or Paste the text content of your CV here]
+
+Task:
+Extract and synthesize the information from the provided links and CV to generate the complete source code (HTML, CSS, JavaScript) for a index.html file. The site must be a standalone, fully functional webpage optimized for performance and SEO.
+
+Format & Design Specifications (The Blueprint):
+
+1. Layout: A modern, single-page application layout with a fixed navigation bar that smoothly scrolls to the following sections:
+   · Hero/Header: Full-viewport-height. Include a professional headshot (use a placeholder if not provided, e.g., https://via.placeholder.com/400), a dynamic typing effect for your title, and a clear call-to-action (CTA) button to "View My Work."
+   · About: A concise narrative. Extract the "Summary" or "Profile" from the CV/LinkedIn. Write this in the first person and focus on the value you bring, not just job duties.
+   · Experience: A timeline or card-based layout displaying your work history. Prioritize the last 3-5 years. Use the CV for dates and titles, but infer technologies used and impact metrics from the description.
+   · Projects: A grid of "Project Cards." Extract your top 3-5 repositories from the GitHub profile. Each card must feature:
+     · Project Title (from the repo name).
+     · A brief description (read the README.md if possible, otherwise infer from the code structure).
+     · Technologies used (extract from the repository topics or file structure).
+     · A link to the live demo (if available) and the GitHub repository.
+   · Skills: A visual tag cloud or categorized progress bars. Group skills into categories (e.g., Frontend, Backend, Cloud, Languages).
+   · Education: A simple list or table extracted from the CV.
+   · Contact: A functional contact form (using a service like formspree.io for the action attribute) and direct links to LinkedIn and GitHub.
+2. Styling & Theme:
+   · Color Palette: Use a "Dark Navy & Gold" theme for sophistication. (Primary: #0A192F; Secondary: #112240; Accent: #64FFDA; Text: #CCD6F6; Muted Text: #8892B0).
+   · Typography: Use Google Fonts (e.g., 'Inter' for body and 'Fira Code' for code snippets/monospace). Ensure a font-weight hierarchy (Light, Regular, Bold).
+   · Animations: Implement subtle CSS animations for scroll reveals (use Intersection Observer or a simple CSS animation library like Animate.css). Do not use excessive or gaudy animations.
+3. Technical Best Practices (GitHub Pages Specific):
+   · Write clean, semantic HTML5.
+   · Keep CSS and JavaScript internal or within a single <style> and <script> block in the index.html file (to ensure easy deployment on GitHub Pages without needing external hosting for assets, except for fonts and libraries via CDN).
+   · Ensure 100% Responsiveness. Implement a mobile-first approach using CSS Grid and Flexbox. The site must look impeccable on mobile, tablet, and desktop.
+   · Include basic SEO meta tags (Title, Description, Open Graph tags for social sharing).
+   · Structure the code with comments to explain sections.
+
+Constraints & Quality Checks:
+
+· Zero Hallucinations: Do not invent experience or projects. If a project is private on GitHub, mention it but do not link it.
+· Professional Tone: The language must be formal, confident, and achievement-oriented. Use active voice (e.g., "Led a team of 5 to deliver..." instead of "Was responsible for...").
+· Call to Action: Ensure the "Hire Me" or "Contact" button is prominent and functional.
+· Performance: The final page must score above 90 on Google PageSpeed Insights (optimize images, minify code if necessary).
+
+Final Output:
+Return the complete HTML code for the index.html file. I will copy and paste this directly into my GitHub repository to deploy via GitHub Pages.
+
+---
