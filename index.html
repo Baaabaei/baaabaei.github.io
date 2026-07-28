@@ -127,6 +127,13 @@
     font-weight:600;
   }
   .links a.primary:hover{ color:var(--ink); opacity:.9; }
+  .links a.lang-toggle{
+    border-color:var(--azure);
+    color:var(--azure);
+    font-family:'Public Sans', sans-serif;
+    font-weight:600;
+  }
+  .links a.lang-toggle:hover{ background:var(--azure); color:var(--ink); }
 
   /* ---------- Signature: signal trace timeline ---------- */
   .trace-wrap{
@@ -141,8 +148,15 @@
     text-transform:uppercase;
     margin-bottom:6px;
   }
+  .trace-scroll{
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding-bottom:6px;
+    -webkit-overflow-scrolling:touch;
+  }
   svg#trace{
     width:100%;
+    min-width:860px;
     height:auto;
     overflow:visible;
     display:block;
@@ -169,13 +183,13 @@
   }
   .trace-label{
     font-family:'IBM Plex Mono', monospace;
-    font-size:10.5px;
+    font-size:9.5px;
     fill:var(--paper-dim);
   }
   .trace-label.major{ fill:var(--paper); font-weight:600; }
   .trace-year{
     font-family:'IBM Plex Mono', monospace;
-    font-size:10px;
+    font-size:9.5px;
     fill:var(--signal-dim);
   }
 
@@ -355,15 +369,18 @@
       <a href="https://www.linkedin.com/in/inv-alizare/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
+      <a href="fa.html" class="lang-toggle">فارسی</a>
     </div>
 
     <div class="trace-wrap">
       <div class="trace-caption">Career signal — 2021–2025</div>
-      <svg id="trace" viewBox="0 0 880 150" preserveAspectRatio="xMidYMid meet" role="img"
+      <div class="trace-scroll">
+      <svg id="trace" viewBox="0 0 1040 190" preserveAspectRatio="xMidYMid meet" role="img"
            aria-label="Timeline from 2021 to 2025 showing career milestones as a signal trace, described in the sections below.">
-        <line class="baseline" x1="0" y1="110" x2="880" y2="110"></line>
+        <line class="baseline" x1="0" y1="110" x2="1040" y2="110"></line>
         <path class="line" id="trace-path" d=""></path>
       </svg>
+      </div>
     </div>
   </header>
 
@@ -521,6 +538,7 @@
       <div class="links">
         <a href="https://github.com/Baaabaei" target="_blank" rel="noopener">github.com/Baaabaei</a>
         <a href="https://www.linkedin.com/in/inv-alizare/" target="_blank" rel="noopener">linkedin.com/in/inv-alizare</a>
+        <a href="fa.html" class="lang-toggle">فارسی</a>
       </div>
     </div>
   </footer>
@@ -532,15 +550,14 @@
   // Career signal trace — data-driven points, drawn as an EEG-style waveform.
   // x: relative position across the 2021-2025 span. amp: signal height (0-1), major: bigger/brighter node.
   var points = [
-    { x: 50,  amp: 0.32, major:false, label:"2021", sub:"Silver Medal (1st Comp.)" },
-    { x: 155, amp: 0.18, major:false, label:"2022", sub:"B.Sc. Computer Eng." },
-    { x: 275, amp: 0.42, major:false, label:"Aug '23", sub:"Co-Founded Ravansha" },
-    { x: 350, amp: 0.30, major:false, label:"Sep '23", sub:"Silver Medal (3rd Comp.)" },
-    { x: 435, amp: 0.55, major:false, label:"Jun '24", sub:"RAG Developer, Homzhans" },
-    { x: 540, amp: 0.95, major:true,  label:"Aug '24", sub:"Gold Medal — IFIA" },
-    { x: 645, amp: 0.50, major:false, label:"Fall '24", sub:"LLM Intern, Vira Sanaat" },
-    { x: 750, amp: 0.28, major:false, label:"2025", sub:"LLM Bootcamp" },
-    { x: 830, amp: 0.20, major:false, label:"Now", sub:"Seeking AI/LLM/RAG role" }
+    { x: 50,  amp: 0.28, major:false, label:"2021", sub:"Silver Medal" },
+    { x: 175, amp: 0.16, major:false, label:"2022", sub:"B.Sc. Graduate" },
+    { x: 300, amp: 0.40, major:false, label:"Aug '23", sub:"Co-Founded Ravansha" },
+    { x: 425, amp: 0.52, major:false, label:"Jun '24", sub:"RAG Dev., Homzhans" },
+    { x: 550, amp: 0.95, major:true,  label:"Aug '24", sub:"Gold Medal — IFIA" },
+    { x: 675, amp: 0.46, major:false, label:"Fall '24", sub:"LLM Intern, Vira Sanaat" },
+    { x: 800, amp: 0.24, major:false, label:"2025", sub:"LLM Bootcamp" },
+    { x: 940, amp: 0.18, major:false, label:"Now", sub:"Seeking AI/LLM/RAG Role" }
   ];
 
   var baseline = 110;
@@ -575,9 +592,13 @@
   path.style.transition = 'stroke-dashoffset 1.6s ease';
   requestAnimationFrame(function(){ path.style.strokeDashoffset = '0'; });
 
-  // Nodes + labels
-  points.forEach(function(p){
+  // Nodes + labels — staggered into two rows so adjacent long labels never overlap
+  points.forEach(function(p, i){
     var xy = toXY(p);
+    var tier = i % 2; // 0 = near row, 1 = far row
+    var subY = baseline + (tier === 0 ? 38 : 58);
+    var yearY = baseline + (tier === 0 ? 20 : 20);
+
     var c = document.createElementNS(ns, 'circle');
     c.setAttribute('class', 'node' + (p.major ? ' major' : ''));
     c.setAttribute('cx', xy[0]);
@@ -585,10 +606,20 @@
     c.setAttribute('r', p.major ? 5 : 3.2);
     svg.appendChild(c);
 
+    // connector tick from baseline down to the staggered label row
+    var tick = document.createElementNS(ns, 'line');
+    tick.setAttribute('x1', xy[0]);
+    tick.setAttribute('y1', baseline + 6);
+    tick.setAttribute('x2', xy[0]);
+    tick.setAttribute('y2', subY - 8);
+    tick.setAttribute('stroke', 'var(--ink-line)');
+    tick.setAttribute('stroke-width', '1');
+    svg.appendChild(tick);
+
     var year = document.createElementNS(ns, 'text');
     year.setAttribute('class', 'trace-year');
     year.setAttribute('x', xy[0]);
-    year.setAttribute('y', baseline + 20);
+    year.setAttribute('y', yearY);
     year.setAttribute('text-anchor', 'middle');
     year.textContent = p.label;
     svg.appendChild(year);
@@ -596,7 +627,7 @@
     var sub = document.createElementNS(ns, 'text');
     sub.setAttribute('class', 'trace-label' + (p.major ? ' major' : ''));
     sub.setAttribute('x', xy[0]);
-    sub.setAttribute('y', baseline + 36);
+    sub.setAttribute('y', subY);
     sub.setAttribute('text-anchor', 'middle');
     sub.textContent = p.sub;
     svg.appendChild(sub);
