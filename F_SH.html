@@ -17,6 +17,27 @@ body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 v
 a{color:var(--sea)}
 a:focus-visible,summary:focus-visible{outline:3px solid var(--coral);outline-offset:3px;border-radius:3px}
 
+
+/* menu */
+.nav{position:sticky;top:0;z-index:20;background:rgba(14,42,71,.96);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-bottom:1px solid rgba(220,235,245,.14)}
+.nav-in{max-width:1000px;margin:0 auto;padding:.6rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:relative}
+.brand{font:700 1.05rem var(--head);color:#fff;text-decoration:none;letter-spacing:-.01em}
+.menu{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
+.menu a{display:block;color:#cfe0ee;text-decoration:none;padding:.4rem .8rem;border-radius:999px;font-weight:600;font-size:.95rem}
+.menu a:hover,.menu a.active{background:rgba(255,255,255,.13);color:#fff}
+.menu a.cv{background:var(--coral);color:#fff;margin-left:.3rem}
+.menu a.cv:hover{background:#b23727}
+.menu a:focus-visible,.brand:focus-visible,.toggle:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.toggle{display:none;background:none;border:1.5px solid #8fb4d1;color:#fff;border-radius:.6rem;padding:.4rem .7rem;font:600 .95rem var(--body);cursor:pointer}
+section[id]{scroll-margin-top:4.5rem}
+@media(max-width:760px){
+  .toggle{display:block}
+  .menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--deep);padding:.5rem 1rem 1rem;border-bottom:1px solid rgba(220,235,245,.14)}
+  .menu.open{display:flex}
+  .menu a{padding:.75rem .8rem;border-radius:.5rem}
+  .menu a.cv{margin:.4rem 0 0;text-align:center}
+}
+
 /* hero */
 .hero{background:var(--deep);color:#fff;padding:clamp(2.5rem,7vw,5rem) 1.5rem 0}
 .hero-in{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr minmax(220px,300px);gap:clamp(1.5rem,5vw,4rem);align-items:center}
@@ -77,7 +98,22 @@ footer{text-align:center;color:var(--muted);font-size:.9rem;padding:0 1.5rem 2re
 </head>
 <body>
 
-<header class="hero">
+<nav class="nav" aria-label="Main">
+  <div class="nav-in">
+    <a class="brand" href="#top">Fatemeh Shahnazian</a>
+    <button class="toggle" id="toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+    <ul class="menu" id="menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
   <div class="hero-in">
     <div>
       <h1>Fatemeh Shahnazian</h1>
@@ -180,7 +216,11 @@ footer{text-align:center;color:var(--muted);font-size:.9rem;padding:0 1.5rem 2re
   </section>
 </main>
 
-<footer>&copy; <span id="yr">2026</span> Fatemeh Shahnazian</footer>
+<footer>&copy; <span id="yr">2026</span> Fatemeh Shahnazian <br>
+  
+ made with ❤️ by: (<a href="https://Alireza.babazadez.ir" target="_blank" rel="noopener">Alireza</a>)
+
+</footer>
 
 <script>
 // Draw a 50 Hz-style sine wave that sags during a fault, then recovers.
@@ -209,5 +249,26 @@ footer{text-align:center;color:var(--muted);font-size:.9rem;padding:0 1.5rem 2re
   document.getElementById('yr').textContent=new Date().getFullYear();
 })();
 </script>
+<script>
+(function(){
+  var t=document.getElementById('toggle'),m=document.getElementById('menu');
+  function set(o){m.classList.toggle('open',o);t.setAttribute('aria-expanded',o);t.textContent=o?'Close':'Menu';}
+  t.addEventListener('click',function(){set(!m.classList.contains('open'));});
+  m.addEventListener('click',function(e){if(e.target.tagName==='A')set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+  var links=[].slice.call(m.querySelectorAll('a'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});
+        }
+      });
+    },{rootMargin:'-30% 0px -60% 0px'});
+    document.querySelectorAll('main section[id]').forEach(function(s){io.observe(s);});
+  }
+})();
+</script>
 </body>
+
 </html>
