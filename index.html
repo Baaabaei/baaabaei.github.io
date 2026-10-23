@@ -88,7 +88,8 @@ footer .sbtn:hover{background:var(--cyan);border-color:var(--cyan);color:#fff}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.slide{transition:none}}
 
 /* futuristic layer */
-body{background:var(--bg) radial-gradient(900px 500px at 85% -5%,color-mix(in srgb,var(--magenta) 16%,transparent),transparent 70%),radial-gradient(800px 500px at 0% 40%,color-mix(in srgb,var(--cyan) 10%,transparent),transparent 70%);background-attachment:fixed}
+html{background-color:#05060f;background-color:var(--bg)}
+body{background-color:#05060f;background-color:var(--bg);background-image:radial-gradient(900px 500px at 85% -5%,rgba(184,107,255,.16),transparent 70%),radial-gradient(800px 500px at 0% 40%,rgba(34,227,255,.10),transparent 70%);background-attachment:fixed}
 body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.28;-webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%)}
 section{border-top:1px solid transparent;border-image:linear-gradient(90deg,transparent,var(--cyan),var(--magenta),transparent) 1;background:transparent}
 h2{text-shadow:0 0 24px var(--glow);display:flex;align-items:center;gap:16px}
