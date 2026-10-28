@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mohammad Mohammadi — Backend Developer | محمد محمدی</title>
+<meta name="description" content="Backend developer focused on Java, Spring Boot and RESTful APIs.">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#142B45;--blue:#2563EB;--cyan:#22D3EE;--ice:#F8FAFC;--slate:#64748B;
+--bg:var(--ice);--surface:#fff;--text:#142B45;--muted:var(--slate);--line:#e2e8f0;--link:var(--blue);--head:var(--navy);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1b2e;--surface:#142B45;--text:#e8eef6;--muted:#94a3b8;--line:#25405f;--link:#60a5fa;--head:#F8FAFC}}
+:root[data-theme="dark"]{--bg:#0d1b2e;--surface:#142B45;--text:#e8eef6;--muted:#94a3b8;--line:#25405f;--link:#60a5fa;--head:#F8FAFC}
+html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Vazirmatn",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;line-height:1.85}
+html[lang="fa"] .en,html[lang="en"] .fa{display:none!important}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--navy);z-index:60}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--navy);color:#F8FAFC}
+nav{display:flex;align-items:center;justify-content:space-between;height:62px;gap:14px}
+.logo{font-weight:800;white-space:nowrap}.logo i{font-style:normal;color:var(--cyan)}
+.links{display:flex;gap:18px;font-size:.9rem;color:#cbd5e1;overflow-x:auto;white-space:nowrap}
+.links a:hover{color:var(--cyan)}
+.tools{display:flex;gap:8px}
+.pill{border:1px solid #37557a;background:transparent;color:#F8FAFC;border-radius:999px;padding:4px 14px;font:inherit;font-size:.85rem;cursor:pointer}
+.pill:hover{border-color:var(--cyan);color:var(--cyan)}
+.hero{padding:76px 0 56px;display:grid;gap:22px}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:.82rem;color:var(--blue);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:34px;height:3px;background:var(--cyan);border-radius:3px}
+h1{margin:0;color:var(--head);font-weight:800;line-height:1.15;font-size:clamp(2.2rem,6vw,3.8rem)}
+h1 small{display:block;font-size:.5em;color:var(--muted);font-weight:600;margin-top:6px}
+.lead{max-width:640px;font-size:1.12rem;color:var(--muted);margin:0}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{background:var(--blue);color:#fff;border-radius:10px;padding:9px 22px;font-weight:600;border:2px solid var(--blue)}
+.btn:hover{background:#1d4fd0}
+.btn.ghost{background:transparent;color:var(--link)}.btn.ghost:hover{border-color:var(--cyan);color:var(--link)}
+section{padding:52px 0;border-top:1px solid var(--line)}
+h2{font-size:1.65rem;margin:0 0 26px;color:var(--head);display:flex;align-items:center;gap:12px}
+h2::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 4px color-mix(in srgb,var(--cyan) 25%,transparent)}
+h3{color:var(--head)}p{margin:0 0 14px}
+.sub{color:var(--muted);margin:-14px 0 24px}
+/* signal timeline */
+.signal{overflow-x:auto;padding:30px 4px 10px}
+.track{display:flex;min-width:760px;position:relative}
+.track::before{content:"";position:absolute;inset-inline:0;top:34px;height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:3px}
+.yr{flex:1;position:relative;padding-top:56px;min-width:0}
+.yr::before{content:"";position:absolute;top:26px;inset-inline-start:0;width:19px;height:19px;border-radius:50%;background:var(--surface);border:4px solid var(--blue)}
+.yr.hot::before{border-color:var(--cyan);background:var(--navy)}
+.yr b{position:absolute;top:0;inset-inline-start:0;font-family:"JetBrains Mono",monospace;font-size:.85rem;color:var(--link)}
+.yr span{display:block;font-size:.86rem;padding-inline-end:10px;color:var(--text)}
+/* about */
+.about{display:grid;grid-template-columns:1fr 220px;gap:32px;align-items:start}
+.portrait{aspect-ratio:1;border-radius:20px;background:linear-gradient(135deg,var(--navy),var(--blue));display:grid;place-items:center;color:var(--cyan);font-size:4.2rem;font-weight:800;font-family:"JetBrains Mono",monospace;border:3px solid var(--cyan)}
+/* experience */
+ol.exp{list-style:none;margin:0;padding:0;display:grid;gap:18px;counter-reset:n}
+.item{counter-increment:n;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px 22px 24px;position:relative;padding-inline-start:70px}
+.item::before{content:counter(n);position:absolute;inset-inline-start:20px;top:20px;width:34px;height:34px;border-radius:50%;background:var(--navy);color:var(--cyan);display:grid;place-items:center;font-family:"JetBrains Mono",monospace;font-size:.9rem}
+.when{font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--link)}
+.item h3{margin:2px 0 0;font-size:1.15rem}.org{color:var(--muted);font-size:.92rem;margin-bottom:8px}
+.item ul{margin:0;padding-inline-start:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--cyan);border-radius:14px;padding:20px}
+.card h3{margin:0 0 6px;font-size:1.05rem}.card p{margin:0;color:var(--muted);font-size:.93rem}
+.card .badge{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:.75rem;background:color-mix(in srgb,var(--blue) 12%,transparent);color:var(--link);padding:1px 10px;border-radius:999px;margin-bottom:8px}
+.group{margin-bottom:24px}.group h3{font-size:.95rem;margin:0 0 10px;color:var(--muted);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:2px 14px;font-size:.88rem}
+.chip:hover{border-color:var(--cyan)}
+.mail{font-family:"JetBrains Mono",monospace;font-size:1.2rem;color:var(--link);direction:ltr;unicode-bidi:isolate;display:inline-block}
+footer{background:var(--navy);color:#cbd5e1;padding:30px 0 calc(34px + env(safe-area-inset-bottom,0px));font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+footer a:hover{color:var(--cyan)}footer nav{height:auto;gap:16px;justify-content:flex-start}
+@media(max-width:700px){.links{display:none}.about{grid-template-columns:1fr}.portrait{max-width:180px}.hero{padding-top:48px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+<a class="logo" href="#top"><span class="fa">محمد<i>.</i>محمدی</span><span class="en">Mohammad<i>.</i>Mohammadi</span></a>
+<div class="links">
+<a href="#signal"><span class="fa">مسیر</span><span class="en">Signal</span></a>
+<a href="#about"><span class="fa">درباره من</span><span class="en">About</span></a>
+<a href="#experience"><span class="fa">تجربه‌ها</span><span class="en">Experience</span></a>
+<a href="#projects"><span class="fa">پروژه‌ها</span><span class="en">Projects</span></a>
+<a href="#courses"><span class="fa">دوره‌ها</span><span class="en">Courses</span></a>
+<a href="#skills"><span class="fa">مهارت‌ها</span><span class="en">Skills</span></a>
+<a href="#contact"><span class="fa">تماس</span><span class="en">Contact</span></a>
+</div>
+<div class="tools"><button class="pill" id="theme" aria-label="Theme">◐</button><button class="pill" id="lang">English</button></div>
+</nav></div></header>
+
+<main class="wrap" id="top">
+<div class="hero">
+<div class="eyebrow">Backend · Java · Spring Boot</div>
+<h1>Mohammad Mohammadi<small>محمد محمدی</small></h1>
+<p class="lead"><span class="fa">برنامه‌نویس Backend؛ طراحی سرویس‌ها و RESTful API با Java و Spring Boot، و مدرس برنامه‌نویسی.</span><span class="en">Backend developer building services and RESTful APIs with Java and Spring Boot, and a programming instructor.</span></p>
+<div class="cta">
+<a class="btn" href="mailto:mohammadkki78@gmail.com"><span class="fa">ایمیل بزنید</span><span class="en">Email me</span></a>
+<a class="btn ghost" href="https://github.com/themohengineer" target="_blank" rel="noopener">GitHub</a>
+<a class="btn ghost" href="https://www.linkedin.com/in/themohengineer" target="_blank" rel="noopener">LinkedIn</a>
+<a class="btn ghost" href="https://t.me/themoh_engineer" target="_blank" rel="noopener">Telegram</a>
+</div>
+</div>
+
+<section id="signal">
+<h2><span class="fa"> مسیر شغلی — ۱۳۹۷ تا ۱۴۰۵</span><span class="en">Career signal — 2018–2026</span></h2>
+<p class="sub"><span class="fa">از دانشکده مهندسی کامپیوتر تا توسعه سرویس‌های Backend و تدریس.</span><span class="en">From computer engineering school to backend services and teaching.</span></p>
+<div class="signal"><div class="track">
+<div class="yr"><b>2018</b><span class="fa">شروع کارشناسی کامپیوتر</span><span class="en">Started B.Sc. in Computer Engineering</span></div>
+<div class="yr"><b>2022</b><span class="fa">فارغ‌التحصیلی، دانشگاه صنعتی کرمانشاه</span><span class="en">Graduated, Kermanshah Univ. of Technology</span></div>
+<div class="yr hot"><b>2023</b><span class="fa">برنامه‌نویس Backend در نهاجا</span><span class="en">Backend developer, Air Force</span></div>
+<div class="yr hot"><b>2023</b><span class="fa">شروع تدریس در دانشگاه ستاری</span><span class="en">Began teaching at Sattari University</span></div>
+<div class="yr"><b>2026</b><span class="fa">تدریس در آموزشگاه اسپیگان</span><span class="en">Teaching at Spigan Institute</span></div>
+</div></div>
+</section>
+
+<section id="about">
+<h2><span class="fa">درباره من</span><span class="en">About</span></h2>
+<div class="about"><div>
+<p class="fa">بیش از شش سال در توسعه نرم‌افزار کار کرده‌ام و تخصص اصلی‌ام Java و Spring Boot است. سرویس‌های Backend و RESTful API را روی PostgreSQL، MySQL و SQL Server طراحی و پیاده‌سازی می‌کنم. در نرم‌افزارهای دسکتاپ با JavaFX، اپلیکیشن‌های Android با Kotlin، Java و Flutter و Frontend با HTML، CSS و JavaScript هم تجربه دارم.</p>
+<p class="fa">با Python و مفاهیم یادگیری ماشین و شبکه‌های عصبی آشنا هستم. تدریس برنامه‌نویسی و ICDL به من کمک کرده مفاهیم فنی را برای سطوح مختلف ساده منتقل کنم. به نرم‌افزار باکیفیت، قابل نگهداری و مقیاس‌پذیر علاقه دارم.</p>
+<p class="en">I have spent 6+ years building software, with Java and Spring Boot as my core. I design and ship backend services and RESTful APIs on PostgreSQL, MySQL and SQL Server, and I have also worked on JavaFX desktop apps, Android apps (Kotlin, Java, Flutter) and frontends in HTML, CSS and JavaScript.</p>
+<p class="en">I am familiar with Python, machine learning and neural networks. Teaching programming and ICDL taught me to explain technical ideas to people at every level. I care about quality, maintainable, scalable software.</p>
+</div><div class="portrait" aria-label="Portrait placeholder">MM</div></div>
+</section>
+
+<section id="experience">
+<h2><span class="fa">تجربه‌ها</span><span class="en">Experience</span></h2>
+<ol class="exp">
+<li class="item"><div class="when"><span class="fa">بهمن ۱۴۰۱ – اکنون</span><span class="en">Feb 2023 – Present</span></div>
+<h3><span class="fa">برنامه‌نویس وب (Backend)</span><span class="en">Backend Web Developer</span></h3>
+<div class="org"><span class="fa">نیروی هوایی ارتش (نهاجا)</span><span class="en">Army Air Force (NAJA)</span></div>
+<ul><li class="fa">طراحی و توسعه وب‌اپلیکیشن ثبت‌نام و استخدام</li><li class="fa">طراحی و توسعه وب‌اپلیکیشن ارسال اطلاعات و نامه‌های اداری</li>
+<li class="en">Designed and built a registration and recruitment web application</li><li class="en">Designed and built a web application for sending data and official letters</li></ul></li>
+<li class="item"><div class="when"><span class="fa">مهر ۱۴۰۲ – اکنون</span><span class="en">Oct 2023 – Present</span></div>
+<h3><span class="fa">مدرس برنامه‌نویسی</span><span class="en">Programming Instructor</span></h3>
+<div class="org"><span class="fa">دانشگاه علوم و فنون هوایی شهید ستاری</span><span class="en">Shahid Sattari Aeronautical University</span></div>
+<ul><li class="fa">تدریس Java، Python، C# و C++ و Word، Excel و ویندوز ۱۰ و ۱۱</li><li class="en">Teaching Java, Python, C# and C++, plus Word, Excel and Windows 10/11</li></ul></li>
+<li class="item"><div class="when"><span class="fa">تیر ۱۴۰۵ – اکنون</span><span class="en">Jul 2026 – Present</span></div>
+<h3><span class="fa">مدرس</span><span class="en">Instructor</span></h3>
+<div class="org"><span class="fa">آموزشگاه اسپیگان، مهرآباد جنوبی</span><span class="en">Spigan Institute, South Mehrabad</span></div>
+<ul><li class="fa">تدریس Python، C# و C++ و Word، Excel، PowerPoint و ویندوز</li><li class="en">Teaching Python, C# and C++, plus Word, Excel, PowerPoint and Windows</li></ul></li>
+</ol>
+</section>
+
+<section id="projects">
+<h2><span class="fa">پروژه‌ها</span><span class="en">Projects</span></h2>
+<div class="grid">
+<div class="card"><span class="badge">Full Stack</span><h3><span class="fa">فروشگاه آنلاین</span><span class="en">Online Store</span></h3><p><span class="fa">وب‌سایت فروشگاهی کامل با درگاه پرداخت.</span><span class="en">A complete e-commerce website with a payment gateway.</span></p></div>
+<div class="card"><span class="badge">Backend</span><h3><span class="fa">پروژه‌های ارتش و نیروی هوایی</span><span class="en">Army & Air Force Projects</span></h3><p><span class="fa">سامانه‌های ثبت‌نام، استخدام و مکاتبات اداری.</span><span class="en">Registration, recruitment and correspondence systems.</span></p></div>
+<div class="card"><span class="badge">JavaFX</span><h3><span class="fa">پروژه‌های آموزشی</span><span class="en">Learning Projects</span></h3><p><span class="fa">مدیا پلیر، مدیریت حساب بانکی و موارد دیگر.</span><span class="en">A media player, a bank-account manager and more.</span></p></div>
+</div>
+<p style="margin-top:18px;color:var(--muted)"><span class="fa">کدهای بیشتر:</span><span class="en">More code:</span> <a dir="ltr" style="color:var(--link)" href="https://github.com/themohengineer" target="_blank" rel="noopener">github.com/themohengineer</a></p>
+</section>
+
+<section id="courses">
+<h2><span class="fa">دوره‌ها و تحصیلات</span><span class="en">Courses & Education</span></h2>
+<div class="grid">
+<div class="card"><span class="badge">1397–1401</span><h3><span class="fa">کارشناسی مهندسی کامپیوتر</span><span class="en">B.Sc. Computer Engineering</span></h3><p><span class="fa">دانشگاه صنعتی کرمانشاه</span><span class="en">Kermanshah University of Technology</span></p></div>
+<div class="card"><span class="badge">130h</span><h3><span class="fa">برنامه‌نویسی وب با Java (Full Stack)</span><span class="en">Java Web Development (Full Stack)</span></h3><p><span class="fa">پروژه‌محور · هلوسن</span><span class="en">Project-based · Holosen</span></p></div>
+<div class="card"><span class="badge">200h</span><h3><span class="fa">اندروید با Kotlin و Java</span><span class="en">Android with Kotlin & Java</span></h3><p><span class="fa">پروژه‌محور · هلوسن و فرادرس</span><span class="en">Project-based · Holosen & Faradars</span></p></div>
+<div class="card"><span class="badge">80h</span><h3><span class="fa">طراحی سایت (HTML، CSS، JS، Bootstrap 5)</span><span class="en">Web Design (HTML, CSS, JS, Bootstrap 5)</span></h3><p><span class="fa">پروژه‌محور · هلوسن و فرادرس</span><span class="en">Project-based · Holosen & Faradars</span></p></div>
+<div class="card"><span class="badge">SQL</span><h3><span class="fa">دوره‌های پایگاه داده</span><span class="en">Database Courses</span></h3><p>SQL Server · MySQL · PostgreSQL</p></div>
+</div>
+</section>
+
+<section id="skills">
+<h2><span class="fa">مهارت‌های فنی</span><span class="en">Technical skills</span></h2>
+<div class="group"><h3><span class="fa">بک‌اند و پایگاه داده</span><span class="en">Backend & databases</span></h3><div class="chips" dir="ltr"><span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">REST APIs</span><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQL Server</span><span class="chip">Postman</span></div></div>
+<div class="group"><h3><span class="fa">موبایل، دسکتاپ و فرانت‌اند</span><span class="en">Mobile, desktop & frontend</span></h3><div class="chips" dir="ltr"><span class="chip">Kotlin</span><span class="chip">Android Studio</span><span class="chip">Flutter</span><span class="chip">JavaFX</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Bootstrap 5</span></div></div>
+<div class="group"><h3><span class="fa">مهندسی و ابزارها</span><span class="en">Engineering & tools</span></h3><div class="chips" dir="ltr"><span class="chip">SOLID</span><span class="chip">Design Patterns</span><span class="chip">Git / GitHub</span><span class="chip">Python</span><span class="chip">ML basics</span><span class="chip">Word</span><span class="chip">Excel</span></div></div>
+<div class="group"><h3><span class="fa">زبان</span><span class="en">Language</span></h3><div class="chips"><span class="chip"><span class="fa">انگلیسی (متوسط)</span><span class="en">English (intermediate)</span></span></div></div>
+</section>
+
+<section id="contact">
+<h2><span class="fa">تماس</span><span class="en">Contact</span></h2>
+<p><a class="mail" href="mailto:mohammadkki78@gmail.com">mohammadkki78@gmail.com</a></p>
+<p style="color:var(--muted)"><span class="fa">تهران، ایران</span><span class="en">Tehran, Iran</span></p>
+<div class="cta">
+<a class="btn" href="https://github.com/themohengineer" target="_blank" rel="noopener">GitHub</a>
+<a class="btn ghost" href="https://www.linkedin.com/in/themohengineer" target="_blank" rel="noopener">LinkedIn</a>
+<a class="btn ghost" href="https://t.me/themoh_engineer" target="_blank" rel="noopener">Telegram</a>
+<a class="btn ghost" href="https://instagram.com/themoh_engineer" target="_blank" rel="noopener">Instagram</a>
+<a class="btn ghost" href="https://ble.ir/themohengineer" target="_blank" rel="noopener">Bale</a>
+</div>
+</section>
+</main>
+<footer><div class="wrap"><div>© 2026 <span class="fa">محمد محمدی</span><span class="en">Mohammad Mohammadi</span></div><div dir="ltr">Java · Spring Boot · Backend</div></div></footer>
+
+<script>
+(function(){
+var root=document.documentElement,lb=document.getElementById('lang'),tb=document.getElementById('theme');
+function setLang(l){root.lang=l;root.dir=l==='fa'?'rtl':'ltr';lb.textContent=l==='fa'?'English':'فارسی';try{localStorage.setItem('lang',l)}catch(e){}}
+var s=null;try{s=localStorage.getItem('lang')}catch(e){}
+if(s==='en')setLang('en');
+lb.onclick=function(){setLang(root.lang==='fa'?'en':'fa')};
+tb.onclick=function(){var d=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;root.dataset.theme=d?'light':'dark'};
+})();
+</script>
+</body>
+</html>
